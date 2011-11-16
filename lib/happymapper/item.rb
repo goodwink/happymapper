@@ -16,7 +16,7 @@ module HappyMapper
     def initialize(name, type, o={})
       self.name = name.to_s
       self.type = type
-      self.tag = o.delete(:tag) || name.to_s
+      self.tag = o[:tag] || name.to_s
       self.options = o
       
       @xml_type = self.class.to_s.split('::').last.downcase
@@ -144,7 +144,7 @@ module HappyMapper
           else
             result = node.find(xpath(namespace))
           end
-          puts "vfxn: #{xpath} #{result.inspect}"
+          # puts "vfxn: #{xpath} #{result.inspect}"
           if result
             if(options[:single].nil? || options[:single])
               value = yield(result)
