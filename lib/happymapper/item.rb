@@ -144,7 +144,7 @@ module HappyMapper
           else
             result = node.find(xpath(namespace))
           end
-          # puts "vfxn: #{xpath} #{result.inspect}"
+          puts "vfxn: #{xpath} #{result.inspect}"
           if result
             if(options[:single].nil? || options[:single])
               value = yield(result)
