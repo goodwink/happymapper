@@ -91,7 +91,7 @@ module HappyMapper
           node = XML::Parser.string(xml).parse.root
         end
 
-        root = node.name == tag_name
+        root = node.name == (options[:tag] || tag_name)
       end
 
       namespace = @namespace || (node.namespaces && node.namespaces.default)
