@@ -100,6 +100,7 @@ module HappyMapper
       xpath = root ? '/' : './/'
       xpath += "#{DEFAULT_NS}:" if namespace
       xpath += tag_name
+      puts "vfxn: root xpath #{xpath}"
 
       nodes = node.find(xpath, Array(namespace))
       collection = nodes.collect do |n|
@@ -111,6 +112,7 @@ module HappyMapper
         end
 
         elements.each do |elem|
+          puts "vfxn: element #{elem.method_name} #{elem.tag}"
           obj.send("#{elem.method_name}=",
           elem.from_xml_node(n, namespace))
         end
