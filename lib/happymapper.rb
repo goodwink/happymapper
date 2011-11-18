@@ -146,7 +146,8 @@ module HappyMapper
     # Create a tag that uses the tag name of the class that has no contents
     # but has the specified namespace or uses the default namespace
     #
-    current_node = XML::Node.new(tag_override || self.class.tag_name)
+    content_value = send(@content) if @content
+    current_node = XML::Node.new(tag_override || self.class.tag_name, content_value)
 
 
     if parent_node
