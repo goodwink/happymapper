@@ -37,6 +37,7 @@ module HappyMapper
     end
 
     def content(name)
+      puts "Setting content tag: #{@tag_name} label: #{name}"
       @content = name
       attr_accessor name
     end
