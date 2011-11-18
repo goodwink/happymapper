@@ -301,7 +301,7 @@ module HappyMapper
     if write_out_to_xml
       document = XML::Document.new
       document.root = current_node
-      document.to_s
+      document.to_s(:indent => false)
     else
       parent_node
     end
