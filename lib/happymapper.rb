@@ -37,7 +37,6 @@ module HappyMapper
     end
 
     def content(name)
-      puts "Setting content tag: #{tag_name} label: #{name}"
       @content = name
       attr_accessor name
     end
@@ -147,8 +146,8 @@ module HappyMapper
     # Create a tag that uses the tag name of the class that has no contents
     # but has the specified namespace or uses the default namespace
     #
-    content_value = send(self.class.instance_variable_get('@content')) if self.class.instance_variable_get('@content')
-    puts "Instance: #{self} Tag: #{tag_override || self.class.tag_name} Content name: #{self.class.instance_variable_get('@content')} Content: #{content_value}"
+    content_key = self.class.instance_variable_get('@content')
+    content_value = send(content_key) if content_key
     current_node = XML::Node.new(tag_override || self.class.tag_name, content_value)
 
 
@@ -215,7 +214,6 @@ module HappyMapper
         end
       end
       
-      puts "Attribute: #{attribute.tag} Value: #{value}"
       current_node[ "#{attribute_namespace ? "#{attribute_namespace.prefix}:" : ""}#{attribute.tag}" ] = value
     end
 
