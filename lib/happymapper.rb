@@ -147,6 +147,7 @@ module HappyMapper
     # but has the specified namespace or uses the default namespace
     #
     content_value = send(@content) if @content
+    puts "Tag: #{tag_override || self.class.tag_name} Content: #{content_value}"
     current_node = XML::Node.new(tag_override || self.class.tag_name, content_value)
 
 
@@ -213,6 +214,7 @@ module HappyMapper
         end
       end
       
+      puts "Attribute: #{attribute.tag} Value: #{value}"
       current_node[ "#{attribute_namespace ? "#{attribute_namespace.prefix}:" : ""}#{attribute.tag}" ] = value
     end
 
